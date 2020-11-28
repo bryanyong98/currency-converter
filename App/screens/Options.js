@@ -8,9 +8,13 @@ import {Entypo} from '@expo/vector-icons';
 import { RowItem, RowSeparator } from '../components/RowItem'; 
 import colors from '../constants/colors'; 
 
-Linking.openURL(url).catch(() => {
-    Alert.alert('Sorry, something went wrong.', 'Please try again later.') ; 
-})
+const openURL = url => {
+
+    Linking.openURL(url).catch(() => {
+        Alert.alert('Sorry, something went wrong.', 'Please try again later.') ; 
+    }); 
+}
+
 
 export default () => {
     return (
