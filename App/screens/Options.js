@@ -1,51 +1,43 @@
 import React from 'react'; 
 import { View, TouchableOpacity, StyleSheet, Text, SafeAreaView } from 'react-native' ; 
 
+// gain access to the icon library 
+import {Entypo} from '@expo/vector-icons'; 
+
+// import row item 
+import { RowItem, RowSeparator } from '../components/RowItem'; 
+import colors from '../constants/colors'; 
+
+
 export default () => {
     return (
         <SafeAreaView style={styles.container}>
-            <TouchableOpacity style={styles.row}>
-                <Text style={styles.text}>Themes</Text>
-            </TouchableOpacity>
 
-            <View style={styles.separator}></View>
+            <RowItem rightIcon={<Entypo name="chevron-right" size={20} color={colors.blue} />} 
+                     text='Themes' 
+                     onPress={() => alert('todo!')}  />
 
-            <TouchableOpacity style={styles.row}>
-                <Text style={styles.text}>React Native Basics</Text>
-            </TouchableOpacity>
+            <RowSeparator /> 
 
-            <View style={styles.separator}></View>
+            <RowItem rightIcon={<Entypo name="export" size={20} color={colors.blue} />}
+                     text='React Native Basics' 
+                     onPress={() => alert('todo 2!')}  />
 
-            <TouchableOpacity style={styles.row}>
-                <Text style={styles.text}>React Native by Example</Text>
-            </TouchableOpacity>
+
+            <RowSeparator /> 
+
+            <RowItem rightIcon={<Entypo name="export" size={20} color={colors.blue} />}
+                     text='React Native by Example' 
+                     onPress={() => alert('todo! part 3')}  />
+
         </SafeAreaView>
     ); 
 }; 
 
-import colors from '../constants/colors'; 
-
 const styles = StyleSheet.create({
-    row: {
-        paddingHorizontal: 20, 
-        paddingVertical: 16 
-    }, 
-    text : {
-        fontSize: 16, 
-        color: colors.text
-    }, 
-
-    separator : {
-
-        backgroundColor: colors.border, 
-        height: StyleSheet.hairlineWidth, 
-        marginLeft: 20 
-    }, 
 
     container : {
         paddingTop: 30
     }
-
-
 
 }); 
