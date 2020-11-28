@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { View, TouchableOpacity, StyleSheet, Text, SafeAreaView, ScrollView } from 'react-native' ; 
+import { View, Alert, TouchableOpacity, StyleSheet, Text, SafeAreaView, ScrollView, Linking } from 'react-native' ; 
 
 // gain access to the icon library 
 import {Entypo} from '@expo/vector-icons'; 
@@ -8,29 +8,32 @@ import {Entypo} from '@expo/vector-icons';
 import { RowItem, RowSeparator } from '../components/RowItem'; 
 import colors from '../constants/colors'; 
 
+Linking.openURL(url).catch(() => {
+    Alert.alert('Sorry, something went wrong.', 'Please try again later.') ; 
+})
 
 export default () => {
     return (
         <SafeAreaView style={styles.container}>
 
-            <ScrollView style={{flex: 1 }}>
+            <ScrollView>
 
                     <RowItem rightIcon={<Entypo name="chevron-right" size={20} color={colors.blue} />} 
                             text='Themes' 
-                            onPress={() => alert('todo!')}  />
+                            onPress={() => openURL("https://reactnative.dev/docs/tutorial")}  />
 
                     <RowSeparator /> 
 
                     <RowItem rightIcon={<Entypo name="export" size={20} color={colors.blue} />}
                             text='React Native Basics' 
-                            onPress={() => alert('todo 2!')}  />
+                            onPress={() => openURL("https://reactnative.dev/docs/tutorial")}  />
 
 
                     <RowSeparator /> 
 
                     <RowItem rightIcon={<Entypo name="export" size={20} color={colors.blue} />}
                             text='React Native by Example' 
-                            onPress={() => alert('todo! part 3')}  />
+                            onPress={() => openURL("https://reactnativeexample.com/")}  />
 
                 
             </ScrollView>
@@ -44,7 +47,8 @@ export default () => {
 const styles = StyleSheet.create({
 
     container : {
-        paddingTop: 30
+        paddingTop: 30, 
+        flex: 1
     }
 
 }); 
