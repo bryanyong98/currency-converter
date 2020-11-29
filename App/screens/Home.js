@@ -4,6 +4,7 @@ import {View, StyleSheet, StatusBar, Dimensions, Image, Text} from 'react-native
 import colors from '../constants/colors' ; 
 import {ConversionInput} from '../components/ConversionInput'; 
 import { format } from 'date-fns' ; 
+import { Button } from '../components/Button'; 
 
 const screen = Dimensions.get('window') ; 
 
@@ -98,6 +99,8 @@ export default () => {
                 new Date(date),
                 'MMM do, yyyy')}`}
             </Text>
+
+            <Button text="Reverse Currency" onPress={() => swapCurrencies()} />
         </View>
     ) ; 
 };
