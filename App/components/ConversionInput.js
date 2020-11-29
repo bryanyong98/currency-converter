@@ -7,8 +7,15 @@ import colors from '../constants/colors' ;
 
 
 export const ConversionInput = ({text, onButtonPress, ...props}) => {
+    
+    const containerStyles = [styles.container] ; 
+
+    if (props.editable === false ){
+        containerStyles.push(styles.containerDisabled); 
+    }
+    
     return (
-        <View style={styles.container}>
+        <View style={containerStyles}>
             <TouchableOpacity style={styles.button} onPress={onButtonPress}>
                 <Text style={styles.buttonText}>{text}</Text>
             </TouchableOpacity>
@@ -26,6 +33,10 @@ const styles = StyleSheet.create({
         marginHorizontal: 20, 
         flexDirection: "row", 
         borderRadius: 10, 
+    }, 
+
+    containerDisabled : {
+        backgroundColor : colors.offWhite, 
     }, 
 
     button : {
@@ -47,6 +58,6 @@ const styles = StyleSheet.create({
         flex : 1, 
         padding: 10, 
         fontSize: 16, 
-        color: colors.textLight      
+        color: colors.textLight,   
     },
 })
