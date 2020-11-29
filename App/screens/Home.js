@@ -1,5 +1,5 @@
 import React from 'react' ; 
-import {View, StyleSheet, StatusBar, Dimensions, Image, Text} from 'react-native'; 
+import {View, StyleSheet, StatusBar, Dimensions, Image, Text, ScrollView} from 'react-native'; 
 
 import colors from '../constants/colors' ; 
 import {ConversionInput} from '../components/ConversionInput'; 
@@ -13,7 +13,10 @@ const styles = StyleSheet.create({
     container : {
         flex : 1, 
         backgroundColor: colors.blue, 
-        justifyContent: "center", 
+    }, 
+
+    content : {
+        paddingTop: screen.height * 0.10, 
     }, 
 
     logoContainer : {
@@ -62,45 +65,52 @@ export default () => {
 
     return (
         <View style={styles.container}>
-            <StatusBar barStyle="light-content" backgroundColor={colors.blue} />
-            <View style={styles.logoContainer}>
-                <Image 
-                    source={require('../assets/images/background.png')}
-                    style={styles.logoBackground}
-                    resizeMode="contain"
-                 />
 
-                <Image 
-                    source={require('../assets/images/logo.png')}
-                    style={styles.logo}
-                    resizeMode="contain"
-                 />
-            </View>
+            <ScrollView>
+                <View style={styles.content}>
 
-            <Text style={styles.textHeader}>Currency Converter</Text>
-            <View style={styles.inputContainer}>
-                <ConversionInput
-                    text="USD"
-                    value="123"
-                    onButtonPress={() => alert('todo!')}
-                    keyboardType="numeric" 
-                    OnChangeText={(text) => console.log('text', text)}/>
+                    <StatusBar barStyle="light-content" backgroundColor={colors.blue} />
+                    <View style={styles.logoContainer}>
+                        <Image 
+                            source={require('../assets/images/background.png')}
+                            style={styles.logoBackground}
+                            resizeMode="contain"
+                        />
 
-                <ConversionInput
-                    text="GBP"
-                    value="123"
-                    editable={false}
-                    onButtonPress={() => alert('todo!')} />
+                        <Image 
+                            source={require('../assets/images/logo.png')}
+                            style={styles.logo}
+                            resizeMode="contain"
+                        />
+                    </View>
 
-            </View>
+                    <Text style={styles.textHeader}>Currency Converter</Text>
+                    <View style={styles.inputContainer}>
+                        <ConversionInput
+                            text="USD"
+                            value="123"
+                            onButtonPress={() => alert('todo!')}
+                            keyboardType="numeric" 
+                            OnChangeText={(text) => console.log('text', text)}/>
 
-            <Text style={styles.text}>
-            {`1 ${baseCurrency} = ${conversionRate} ${quoteCurrency} as of ${format(
-                new Date(date),
-                'MMM do, yyyy')}`}
-            </Text>
+                        <ConversionInput
+                            text="GBP"
+                            value="123"
+                            editable={false}
+                            onButtonPress={() => alert('todo!')} />
 
-            <Button text="Reverse Currency" onPress={() => swapCurrencies()} />
+                    </View>
+
+                    <Text style={styles.text}>
+                    {`1 ${baseCurrency} = ${conversionRate} ${quoteCurrency} as of ${format(
+                        new Date(date),
+                        'MMM do, yyyy')}`}
+                    </Text>
+
+                    <Button text="Reverse Currency" onPress={() => swapCurrencies()} />
+                </View>    
+            </ScrollView>
+
         </View>
     ) ; 
 };
