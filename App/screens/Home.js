@@ -57,7 +57,7 @@ export default () => {
     const baseCurrency  = 'USD'; 
     const quoteCurrency = 'GBP' ; 
     const conversionRate = 0.89824; 
-    const date = '2020-03-23'  // define beforehand for null error prevention 
+    const date = new Date();  // define beforehand for null error prevention 
 
     return (
         <View style={styles.container}>
